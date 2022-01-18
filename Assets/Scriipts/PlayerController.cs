@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
 
         // Making it move
         transform.Translate(moveDelta * Time.deltaTime);
+
+        
+
     }
 
     
