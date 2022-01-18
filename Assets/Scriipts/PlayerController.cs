@@ -1,114 +1,54 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator anim;
-    public float speed;
+    private BoxCollider2D boxCollider;
 
-    // Use this for initialization
-    void Start()
+    private Vector3 moveDelta;
+
+    private RaycastHit2D hit;
+    
+    void start()
     {
-        anim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.D))
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        // Reset MoveDelta
+        moveDelta = new Vector3(x, y, 0);
+
+        //Swap Sprite direction
+        if (moveDelta.x > 0)
         {
-            transform.Translate(Vector2.right * speed);
+            transform.localScale = Vector3.one;
+        }
+        else if (moveDelta.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        // move in direction by casting a box first, if box returns null, free to move
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if(hit.collider == null)
         {
-            transform.Translate(-Vector2.right * speed);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector2.up * speed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(-Vector2.up * speed);
+            transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
 
-
-        if (Input.GetKey(KeyCode.A))
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null)
         {
-            anim.SetBool("Left", true);
-            anim.SetBool("Right", false);
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", false);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            anim.SetBool("Down", true);
-            anim.SetBool("Up", false);
-            anim.SetBool("Left", false);
-            anim.SetBool("Right", false);
-
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            anim.SetBool("Right", true);
-            anim.SetBool("Left", false);
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", false);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            anim.SetBool("Up", true);
-            anim.SetBool("Down", false);
-            anim.SetBool("Left", false);
-            anim.SetBool("Right", false);
+            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
 
-
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            anim.SetBool("Player_Left", true);
-        }
-        else
-        {
-            anim.SetBool("Player_Left", false);
-        }
-
-
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            anim.SetBool("Player_Down", true);
-        }
-        else
-        {
-            anim.SetBool("Player_Down", false);
-        }
-
-
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            anim.SetBool("Player_Right", true);
-        }
-        else
-        {
-            anim.SetBool("Player_Right", false);
-        }
-
-
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            anim.SetBool("Player_Up", true);
-        }
-        else
-        {
-            anim.SetBool("Player_Up", false);
-        }
-
-
+        // Making it move
+        transform.Translate(moveDelta * Time.deltaTime);
     }
+
+    
 }
