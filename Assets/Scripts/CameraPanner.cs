@@ -8,6 +8,10 @@ public class CameraPanner : MonoBehaviour
     public float panBorderThickness = 10f;
     public Vector2 panLimit;
 
+    public float zoomSize = 5f;
+    public float zoomLimitMax = 2f;
+    public float zoomLimitMin = 4f;
+
     // Update is called once per frame
     void Update()
     {
@@ -37,5 +41,23 @@ public class CameraPanner : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y); 
 
         transform.position = pos;
+
+        //enableZoom();
+    }
+
+    public void enableZoom()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            if(zoomSize > zoomLimitMax)
+            zoomSize -= 1;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            if(zoomSize < zoomLimitMin)
+            zoomSize += 1;
+        }
+        GetComponent<Camera>().orthographicSize = zoomSize;
     }
 }
