@@ -41,6 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player & Enemies
+  - name: Actor
     uniqueID: 712241281
     locked: 0
