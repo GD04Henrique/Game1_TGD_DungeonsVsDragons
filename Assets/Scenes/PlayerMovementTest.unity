@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 691324953}
   m_Layer: 0
   m_Name: '[GameManager]'
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,6 +398,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapValue: 2
+  rabbit: {fileID: 302579270}
+  actor:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!4 &691324954
 Transform:
   m_ObjectHideFlags: 0

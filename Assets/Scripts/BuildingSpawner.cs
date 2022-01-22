@@ -7,26 +7,28 @@ public class BuildingSpawner : MonoBehaviour
     
     public float snapValue = 20;
 
+    public GameObject rabbit;
+
+    public LayerMask actor;
+
+
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Blocking")))
+        
+        
+        Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero, Mathf.Infinity, actor);
+        if (hit)
         {
-            Vector2 mousePoint = hit.point;
-
-            
-            mousePoint.x = Round(mousePoint.x);
-            mousePoint.y = Round(mousePoint.y);
-
-            transform.position = mousePoint;
+            Debug.Log("Actor Detected");
         }
 
-    }
 
-    private float Round(float input)
-    {
-        return snapValue * Mathf.Round(input / snapValue);
+        if (Input.GetKeyDown("space"))
+        {
+            Instantiate(rabbit, new Vector2(mousePoint.x, mousePoint.y), Quaternion.identity);
+            
+        }
     }
 }
