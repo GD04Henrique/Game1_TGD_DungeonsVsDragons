@@ -11,12 +11,15 @@ public class BuildingSpawner : MonoBehaviour
     public LayerMask actor;
 
     public int rabbitCost = 2;
-
     public Text costText;
+    public Text balanceText;
+
+    public int balance = 20;
 
     void Start()
     {
         costText.text = "Rabbit Cost: " + rabbitCost;
+        balanceText.text = "Total Balance : " + balance;
     }
 
     // Update is called once per frame
@@ -24,19 +27,32 @@ public class BuildingSpawner : MonoBehaviour
     {
 
         Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero, Mathf.Infinity, actor);
+        RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.one, Mathf.Infinity, actor);
         if (hit)
         {
-            Debug.Log("Actor Detected");
+            // Debug.Log("Actor Detected");
         }
 
 
         if (Input.GetKeyDown("space"))
         {
-            Instantiate(rabbit, new Vector2(mousePoint.x, mousePoint.y), Quaternion.identity);
-            rabbitCost += 2;
+            balanceText.text = "Total Balance : " + balance;
+            if (balance >= rabbitCost)
+            {
+                Instantiate(rabbit, new Vector2(mousePoint.x, mousePoint.y), Quaternion.identity);
+                rabbitCost += 2;
+                balance -= rabbitCost;
+
+            }
+
+            if (balance < rabbitCost)
+            {
+                Debug.Log("Insufficient balance");
+            }
+           
         }
 
         costText.text = "Rabbit Cost: " + rabbitCost;
+        balanceText.text = "Total Balance : " + balance;
     }
 }
