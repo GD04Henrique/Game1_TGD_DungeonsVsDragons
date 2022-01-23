@@ -19,7 +19,7 @@ public class BuildingSpawner : MonoBehaviour
     void Start()
     {
         costText.text = "Rabbit Cost: " + rabbitCost;
-        balanceText.text = "Total Balance : " + balance;
+        balanceText.text = "Total Coins : " + balance;
     }
 
     // Update is called once per frame
@@ -34,9 +34,9 @@ public class BuildingSpawner : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            balanceText.text = "Total Balance : " + balance;
+            balanceText.text = "Total Coins : " + balance;
             if (balance >= rabbitCost)
             {
                 Instantiate(rabbit, new Vector2(mousePoint.x, mousePoint.y), Quaternion.identity);
@@ -53,6 +53,6 @@ public class BuildingSpawner : MonoBehaviour
         }
 
         costText.text = "Rabbit Cost: " + rabbitCost;
-        balanceText.text = "Total Balance : " + balance;
+        balanceText.text = "Total Coins : " + balance;
     }
 }
