@@ -9,10 +9,24 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDelta;
 
     private RaycastHit2D hit;
+
+    [SerializeField]
+    private BaseStats Enemy;
+
+    [SerializeField]
+    private BuildingSpawner _coins;
     
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Enemy.OnDie();
+        }
     }
 
     private void FixedUpdate()
@@ -48,5 +62,13 @@ public class PlayerController : MonoBehaviour
      
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Coin"))
+        {
+            _coins.snapValue++;
+        }
+    }
+
+
 }
