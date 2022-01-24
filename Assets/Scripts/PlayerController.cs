@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit2D hit;
     
-    void start()
+    void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }
