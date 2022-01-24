@@ -47,7 +47,7 @@ public class MeleeEnemyBehavior : BaseStats
     public void OnDie()
     {
         GameObject clone;
-        clone = Instantiate(coin, transform);
+        clone = Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         base.OnDie();
     }
 }

@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private BaseStats Enemy;
+
+    [SerializeField]
+    private BuildingSpawner _coins;
     
     void Start()
     {
@@ -59,5 +62,13 @@ public class PlayerController : MonoBehaviour
      
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Coin"))
+        {
+            _coins.snapValue++;
+        }
+    }
+
+
 }

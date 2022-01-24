@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1745379557}
+  _coins: {fileID: 691324953}
 --- !u!61 &699083752
 BoxCollider2D:
   m_ObjectHideFlags: 0
