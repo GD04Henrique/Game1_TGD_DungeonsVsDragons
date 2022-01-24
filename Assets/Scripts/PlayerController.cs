@@ -9,10 +9,21 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDelta;
 
     private RaycastHit2D hit;
+
+    [SerializeField]
+    private BaseStats Enemy;
     
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Enemy.OnDie();
+        }
     }
 
     private void FixedUpdate()
