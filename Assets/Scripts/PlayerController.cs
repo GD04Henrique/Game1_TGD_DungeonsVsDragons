@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Coin"))
         {
             Debug.Log("HIT COIN");
-            _coins.snapValue++;
+            _coins.balance++;
             Destroy(collision.gameObject);
         }
 
@@ -92,6 +92,14 @@ public class PlayerController : MonoBehaviour
             _Enemy = collision.gameObject;
             //Debug.Log("HIT ENEMY");
         }
+
+        /**if (collision.gameObject.CompareTag("Coin"))
+        {
+            Debug.Log("HIT COIN");
+            //ollision.gameObject.GetComponent<BuildingSpawner>().snapValue++;
+            _coins.balance++;
+            Destroy(collision.gameObject);
+        }**/
     }
 
     private void OnCollisionExit2D(Collision2D collision)
