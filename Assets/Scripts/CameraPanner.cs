@@ -12,7 +12,8 @@ public class CameraPanner : MonoBehaviour
     public float zoomLimitMax = 2f;
     public float zoomLimitMin = 4f;
 
-    public Transform followTransform;
+    public Transform target;
+    public float FollowSpeed = 2f;
 
     // Update is called once per frame
     void Update()
@@ -47,7 +48,8 @@ public class CameraPanner : MonoBehaviour
 
         enableZoom();
 
-        this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z);
+        Vector3 newPos = new Vector3(target.position.x, target.position.y, -10f);
+        transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
     }
 
     public void enableZoom()

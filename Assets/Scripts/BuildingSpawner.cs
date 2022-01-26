@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class BuildingSpawner : MonoBehaviour
 {
 
-    public float snapValue = 20;
+    public float snapValue = 16;
 
     public GameObject rabbit;
 
@@ -39,7 +39,7 @@ public class BuildingSpawner : MonoBehaviour
             balanceText.text = "Total Coins : " + balance;
             if (balance >= rabbitCost)
             {
-                Instantiate(rabbit, new Vector2(mousePoint.x, mousePoint.y), Quaternion.identity);
+                Instantiate(rabbit, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
                 rabbitCost += 2;
                 balance -= rabbitCost;
 

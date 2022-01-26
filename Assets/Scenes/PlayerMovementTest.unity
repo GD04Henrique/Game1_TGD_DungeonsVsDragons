@@ -548,6 +548,8 @@ MonoBehaviour:
   zoomSize: 5
   zoomLimitMax: 2
   zoomLimitMin: 4
+  target: {fileID: 699083754}
+  FollowSpeed: 2
 --- !u!1 &691324952
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83200c662ab91ca4ea301f972eeb61e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coins: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!61 &699083752
 BoxCollider2D:
   m_ObjectHideFlags: 0
