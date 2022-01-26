@@ -10,22 +10,34 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit2D hit;
 
-    [SerializeField]
-    private BaseStats Enemy;
+    private GameObject _Enemy;
 
     [SerializeField]
     private BuildingSpawner _coins;
+
+    [SerializeField]
+    private Animator anim;
+
+    private int _enemyTrigger;
     
     void Start()
     {
+        _enemyTrigger = 0;
         boxCollider = GetComponent<BoxCollider2D>();
+        anim.GetComponent<Animator>();
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Enemy.OnDie();
+            anim.Play("Attack");
+            if(_enemyTrigger == 1)
+            {
+                _Enemy.GetComponent<BaseStats>().OnDie();
+                _enemyTrigger--;
+            }
+            //Enemy.OnDie();
         }
     }
 
@@ -66,8 +78,35 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            _coins.snapValue++;
+            Debug.Log("HIT COIN");
+            _coins.balance++;
+            Destroy(collision.gameObject);
         }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            _enemyTrigger = 1;
+            _Enemy = collision.gameObject;
+            //Debug.Log("HIT ENEMY");
+        }
+
+        /**if (collision.gameObject.CompareTag("Coin"))
+        {
+            Debug.Log("HIT COIN");
+            //ollision.gameObject.GetComponent<BuildingSpawner>().snapValue++;
+            _coins.balance++;
+            Destroy(collision.gameObject);
+        }**/
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _enemyTrigger = 0;
+        _Enemy = null;
     }
 
 
