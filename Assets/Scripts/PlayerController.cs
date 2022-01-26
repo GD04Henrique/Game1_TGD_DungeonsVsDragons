@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
             if(_enemyTrigger == 1)
             {
                 _Enemy.GetComponent<BaseStats>().OnDie();
+                _enemyTrigger--;
             }
             //Enemy.OnDie();
         }
