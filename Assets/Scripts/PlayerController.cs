@@ -10,21 +10,32 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit2D hit;
 
-    [SerializeField]
-    private BaseStats Enemy;
+    private GameObject _Enemy;
 
     [SerializeField]
     private BuildingSpawner _coins;
+
+    [SerializeField]
+    private Animator anim;
+
+    private int _enemyTrigger;
     
     void Start()
     {
+        _enemyTrigger = 0;
         boxCollider = GetComponent<BoxCollider2D>();
+        anim.GetComponent<Animator>();
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            anim.Play("Attack");
+            if(_enemyTrigger == 1)
+            {
+                _Enemy.GetComponent<BaseStats>().OnDie();
+            }
             //Enemy.OnDie();
         }
     }
@@ -71,14 +82,22 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.CompareTag("Enemy"))
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("HIT ENEMY");
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                collision.GetComponent<BaseStats>().OnDie();
-            }
+            _enemyTrigger = 1;
+            _Enemy = collision.gameObject;
+            //Debug.Log("HIT ENEMY");
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _enemyTrigger = 0;
+        _Enemy = null;
     }
 
 
