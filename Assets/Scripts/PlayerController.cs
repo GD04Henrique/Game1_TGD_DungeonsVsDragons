@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Enemy.OnDie();
+            //Enemy.OnDie();
         }
     }
 
@@ -66,7 +66,18 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
+            Debug.Log("HIT COIN");
             _coins.snapValue++;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            Debug.Log("HIT ENEMY");
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                collision.GetComponent<BaseStats>().OnDie();
+            }
         }
     }
 
