@@ -3832,7 +3832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 240, y: -644}
+  m_AnchoredPosition: {x: 330, y: -622}
   m_SizeDelta: {x: 389.0199, y: 87.9985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683828303
@@ -3848,6 +3848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTime: 60
+  spawnTime: 2
   timerText: {fileID: 1683828304}
   _enemy: {fileID: 8404059340516494174, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
 --- !u!114 &1683828304
