@@ -1849,6 +1849,7 @@ MonoBehaviour:
   zoomSize: 5
   zoomLimitMax: 2
   zoomLimitMin: 4
+  followTransform: {fileID: 699083754}
 --- !u!1 &678539922
 GameObject:
   m_ObjectHideFlags: 0
