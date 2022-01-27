@@ -1849,6 +1849,8 @@ MonoBehaviour:
   zoomSize: 5
   zoomLimitMax: 2
   zoomLimitMin: 4
+  target: {fileID: 699083754}
+  FollowSpeed: 2
 --- !u!1 &678539922
 GameObject:
   m_ObjectHideFlags: 0

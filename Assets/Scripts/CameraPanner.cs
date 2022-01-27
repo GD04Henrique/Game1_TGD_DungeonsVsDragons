@@ -12,10 +12,14 @@ public class CameraPanner : MonoBehaviour
     public float zoomLimitMax = 2f;
     public float zoomLimitMin = 4f;
 
+    public Transform target;
+    public float FollowSpeed = 2f;
+
     // Update is called once per frame
     void Update()
     {
         Vector3 pos = transform.position;
+        /*
 
         if(Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
@@ -40,9 +44,12 @@ public class CameraPanner : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y); 
 
-        transform.position = pos;
+        transform.position = pos; */
 
-        //enableZoom();
+        enableZoom();
+
+        Vector3 newPos = new Vector3(target.position.x, target.position.y, -10f);
+        transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
     }
 
     public void enableZoom()
