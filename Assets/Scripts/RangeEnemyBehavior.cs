@@ -6,8 +6,8 @@ public class RangeEnemyBehavior : BaseStats
 {
     public GameObject coin;
 
-    [SerializeField]
-    private Transform player;
+    //[SerializeField]
+    public Transform player;
 
     private Rigidbody2D rb;
 
@@ -27,11 +27,12 @@ public class RangeEnemyBehavior : BaseStats
     void Update()
     {
         Vector3 direction = player.position - transform.position;
-        direction = direction - new Vector3(10f,10f,10f);
+        Vector3 stop = player.position - new Vector3(10f,10f,0f);
         //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         //rb.rotation = angle;
         direction.Normalize();
-        movement = direction;
+        stop.Normalize();
+        movement = direction - stop;
     }
 
     private void FixedUpdate()
