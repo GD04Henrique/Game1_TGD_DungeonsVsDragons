@@ -6,8 +6,8 @@ public class MeleeEnemyBehavior : BaseStats
 {
     public GameObject coin;
 
-    [SerializeField]
-    private Transform player;
+    //[SerializeField]
+    public Transform player;
 
     private Rigidbody2D rb;
 

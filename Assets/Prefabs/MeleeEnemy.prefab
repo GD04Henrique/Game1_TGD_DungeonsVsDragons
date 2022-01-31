@@ -147,5 +147,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   coin: {fileID: 8241813788413771160, guid: d39f91432f69ea74eb9cb4bdb472cedb, type: 3}
-  player: {fileID: 1388278022007659459, guid: 6e7d03317bd122646a8e7a4693067b00, type: 3}
+  player: {fileID: 0}
   moveSpeed: 1
