@@ -10,10 +10,16 @@ public class Timer : MonoBehaviour
 
     public float spawnTime = 2f;
 
+    private float _bossTime;
+    private bool _isBoss;
+
     public Text timerText;
 
     [SerializeField]
     private GameObject _enemy;
+
+    [SerializeField]
+    private GameObject _boss;
 
     [SerializeField]
     private Transform _player;
@@ -21,6 +27,8 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         timerText.text = "Time: " + targetTime.ToString();
+        _bossTime = targetTime / 2;
+        _isBoss = false;
     }
 
     void Update()
@@ -29,6 +37,7 @@ public class Timer : MonoBehaviour
         targetTime -= Time.deltaTime;
         spawnTime -= Time.deltaTime;
 
+
         if (spawnTime <= 0f)
         {
             Debug.Log("Enemy Appears");
@@ -36,6 +45,15 @@ public class Timer : MonoBehaviour
             clone = Instantiate(_enemy, new Vector3(0.699999988f, 5.94000006f, 0), Quaternion.identity);
             clone.GetComponent<MeleeEnemyBehavior>().player = _player; 
             spawnTime = 2f;
+        }
+
+        if(targetTime <= _bossTime && _isBoss == false)
+        {
+            Debug.Log("Boss Appears");
+            GameObject clone;
+            clone = Instantiate(_boss, new Vector3(0.699999988f, 5.94000006f, 0), Quaternion.identity);
+            clone.GetComponent<BossEnemyBehavior>().player = _player;
+            _isBoss = true;
         }
 
         if(targetTime <= 0f)
