@@ -34,7 +34,7 @@ public class BuildingSpawner : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetButtonDown("Fire1"))
         {
             balanceText.text = "Total Coins : " + balance;
             if (balance >= rabbitCost)
