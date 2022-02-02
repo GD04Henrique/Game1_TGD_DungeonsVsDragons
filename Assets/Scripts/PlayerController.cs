@@ -19,12 +19,19 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private int _enemyTrigger;
+
+    public int maxHealth = 100;
+    public int CurrentHealth;
+
+    public HealthBar_Controller healthbar;
     
     void Start()
     {
         _enemyTrigger = 0;
         boxCollider = GetComponent<BoxCollider2D>();
         anim.GetComponent<Animator>();
+        CurrentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     private void Update()
@@ -107,6 +114,12 @@ public class PlayerController : MonoBehaviour
     {
         _enemyTrigger = 0;
         _Enemy = null;
+    }
+
+    void TakeDamage(int damage)
+    {
+        CurrentHealth -= damage;
+        healthbar.SetHealth(CurrentHealth);
     }
 
 
