@@ -623,9 +623,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 586094980}
+      - m_Target: {fileID: 102900000, guid: 91ba71025be382741bcdc11a8bb1a12b, type: 3}
         m_TargetAssemblyTypeName: RandScene, Assembly-CSharp
-        m_MethodName: ButtonMoveScene
+        m_MethodName: 
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
