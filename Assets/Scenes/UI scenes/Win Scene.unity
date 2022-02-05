@@ -2803,7 +2803,7 @@ GameObject:
   - component: {fileID: 1755587182}
   - component: {fileID: 1755587181}
   m_Layer: 5
-  m_Name: Failed
+  m_Name: Good Job
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2861,7 +2861,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "YOU FAILED TO CLEAR THE \nDUNGEON!"
+  m_Text: 'GOOD JOB MIGHTY HERO!
+
+    YOU CLEARED THE DUNGEON!'
 --- !u!222 &1755587182
 CanvasRenderer:
   m_ObjectHideFlags: 0
