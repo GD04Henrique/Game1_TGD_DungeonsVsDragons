@@ -26,8 +26,11 @@ public class Timer : MonoBehaviour
 
     private Vector3[] _doors;
 
+    public static bool _isClearGame;
+
     private void Start()
     {
+        _isClearGame = false;
         _doors = new Vector3[3];
         _doors[0] = new Vector3(-9.37f,8.55f,0f);
         _doors[1] = new Vector3(19.6f,8.55f,0f);
@@ -91,7 +94,8 @@ public class Timer : MonoBehaviour
 
     void timerEnded()
     {
-        SceneManager.LoadScene(1);
+        _isClearGame = false;
+        SceneManager.LoadScene("End Game");
     }
 
 

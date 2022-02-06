@@ -64,6 +64,7 @@ public class BuildingSpawner : MonoBehaviour
             if (balance >= giraffeCost)
             {
                 Instantiate(giraffe, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
+                giraffe.GetComponent<Tower>()._player = Player.GetComponent<PlayerController>();
                 giraffeCost += 2;
                 balance -= giraffeCost;
 
