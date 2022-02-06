@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     public float targetTime = 60f;
 
-    public float spawnTime = 5f;
+    public float spawnTime = 2f;
 
     private float _bossTime;
     private bool _isBoss;
@@ -28,8 +28,11 @@ public class Timer : MonoBehaviour
 
     public static bool _isClearGame;
 
+    public static int _enemyDefeated;
+
     private void Start()
     {
+        _enemyDefeated = 0;
         _isClearGame = false;
         _doors = new Vector3[3];
         _doors[0] = new Vector3(-9.37f,8.55f,0f);
@@ -73,7 +76,15 @@ public class Timer : MonoBehaviour
             GameObject clone;
             clone = Instantiate(_enemy, _doors[randomVector], Quaternion.identity);
             clone.GetComponent<MeleeEnemyBehavior>().player = _player; 
-            spawnTime = 3f;
+            spawnTime = 2f;
+        }
+
+        if(_enemyDefeated >= 20 && _isBoss == false)
+        {
+            GameObject clone;
+            clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);
+            clone.GetComponent<BossEnemyBehavior>().player = _player;
+            _isBoss = true;
         }
 
         if(targetTime <= _bossTime && _isBoss == false)
@@ -87,6 +98,12 @@ public class Timer : MonoBehaviour
 
         if(targetTime <= 0f)
         {
+            _isClearGame = false;
+            timerEnded();
+        }
+
+        if(_isClearGame == true)
+        {
             timerEnded();
         }
 
@@ -94,7 +111,6 @@ public class Timer : MonoBehaviour
 
     void timerEnded()
     {
-        _isClearGame = false;
         SceneManager.LoadScene("End Game");
     }
 
