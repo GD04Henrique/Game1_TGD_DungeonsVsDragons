@@ -19,6 +19,7 @@ public class BossEnemyBehavior : BaseStats
     // Start is called before the first frame update
     void Start()
     {
+        _health = 100f;
         rb = this.GetComponent<Rigidbody2D>();
     }
 
