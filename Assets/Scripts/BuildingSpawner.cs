@@ -6,8 +6,8 @@ public class BuildingSpawner : MonoBehaviour
 
     public float snapValue = 16;
 
-    public GameObject rabbit;
-    public GameObject giraffe;
+    public GameObject rabbit; // BOOSTER
+    public GameObject giraffe; // OBSTACLE
 
     public LayerMask actor;
 
@@ -18,6 +18,8 @@ public class BuildingSpawner : MonoBehaviour
     public Text balanceText;
 
     public int balance = 20;
+
+    public GameObject Player;
 
     void Start()
     {
@@ -44,6 +46,7 @@ public class BuildingSpawner : MonoBehaviour
             if (balance >= rabbitCost)
             {
                 Instantiate(rabbit, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
+                rabbit.GetComponent<Tower>()._player = Player.GetComponent<PlayerController>();
                 rabbitCost += 2;
                 balance -= rabbitCost;
 

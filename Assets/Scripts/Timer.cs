@@ -26,16 +26,35 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        timerText.text = "Time: " + targetTime.ToString();
+        //timerText.text = "Time: " + targetTime.ToString();
         _bossTime = targetTime / 2;
         _isBoss = false;
     }
 
     void Update()
     {
-        timerText.text = "Time: " + targetTime.ToString();
         targetTime -= Time.deltaTime;
         spawnTime -= Time.deltaTime;
+
+        DisplayTime(targetTime);
+
+        void DisplayTime(float timeToDisplay)
+        {
+            if(timeToDisplay < 0)
+            {
+                timeToDisplay = 0;
+            }
+
+            else if(timeToDisplay > 0)
+            {
+                timeToDisplay += 1;
+            }
+
+            float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+            float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
 
 
         /**if (spawnTime <= 0f)
