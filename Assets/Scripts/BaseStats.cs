@@ -27,4 +27,10 @@ public class BaseStats : MonoBehaviour
         _health = 0f;
         Destroy(gameObject);
     }
+
+    virtual
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
+    }
 }

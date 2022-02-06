@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public int CurrentHealth;
 
     public HealthBar_Controller healthbar;
+
+    public int attack = 10;
     
     void Start()
     {
