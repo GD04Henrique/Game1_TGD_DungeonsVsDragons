@@ -14,13 +14,13 @@ public class BossEnemyBehavior : BaseStats
     private Vector2 movement;
 
     [SerializeField]
-    private float moveSpeed = 0.3f;
+    private float moveSpeed = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
+        _health = 100f;
         rb = this.GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -49,5 +49,26 @@ public class BossEnemyBehavior : BaseStats
         GameObject clone;
         clone = Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         base.OnDie();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Attack(other.gameObject);
+    }
+
+    public void Attack(GameObject opponent)
+    {
+        if(opponent.CompareTag("Booster"))
+        {
+            opponent.GetComponent<BaseStats>().TakeDamage(30);
+        }
+        if(opponent.CompareTag("Obstacle"))
+        {
+            opponent.GetComponent<BaseStats>().TakeDamage(20);
+        }
+        if(opponent.CompareTag("Player"))
+        {
+            opponent.GetComponent<PlayerController>().TakeDamage(20);
+        }
     }
 }
