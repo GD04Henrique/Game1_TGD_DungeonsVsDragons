@@ -33,7 +33,7 @@ public class Tower : BaseStats
             {
                 _player.GetComponent<PlayerController>().attack = _OGplayerAttack;
             }
-            Destroy(gameObject);
+            OnDie();
         }
     }
 }

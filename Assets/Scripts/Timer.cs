@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
         spawnTime -= Time.deltaTime;
 
 
-        if (spawnTime <= 0f)
+        /**if (spawnTime <= 0f)
         {
             Debug.Log("Enemy Appears");
             GameObject clone;
@@ -54,7 +54,7 @@ public class Timer : MonoBehaviour
             clone = Instantiate(_boss, new Vector3(0.699999988f, 5.94000006f, 0), Quaternion.identity);
             clone.GetComponent<BossEnemyBehavior>().player = _player;
             _isBoss = true;
-        }
+        }**/
 
         if(targetTime <= 0f)
         {

@@ -118,10 +118,11 @@ public class PlayerController : MonoBehaviour
         _Enemy = null;
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
         healthbar.SetHealth(CurrentHealth);
+        Debug.Log("taking damage, health: " + CurrentHealth);
     }
 
 

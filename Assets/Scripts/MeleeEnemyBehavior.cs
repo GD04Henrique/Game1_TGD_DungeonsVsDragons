@@ -50,4 +50,25 @@ public class MeleeEnemyBehavior : BaseStats
         clone = Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         base.OnDie();
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Attack(other.gameObject);
+    }
+
+    public void Attack(GameObject opponent)
+    {
+        if(opponent.CompareTag("Booster"))
+        {
+            opponent.GetComponent<BaseStats>().TakeDamage(10);
+        }
+        if(opponent.CompareTag("Obstacle"))
+        {
+            opponent.GetComponent<BaseStats>().TakeDamage(5);
+        }
+        if(opponent.CompareTag("Player"))
+        {
+            opponent.GetComponent<PlayerController>().TakeDamage(5);
+        }
+    }
 }
