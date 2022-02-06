@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     public float targetTime = 60f;
 
-    public float spawnTime = 2f;
+    public float spawnTime = 5f;
 
     private float _bossTime;
     private bool _isBoss;
@@ -24,8 +24,14 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private Transform _player;
 
+    private Vector3[] _doors;
+
     private void Start()
     {
+        _doors = new Vector3[3];
+        _doors[0] = new Vector3(-9.37f,8.55f,0f);
+        _doors[1] = new Vector3(19.6f,8.55f,0f);
+        _doors[2] = new Vector3(37.528f,8.55f,0f);
         //timerText.text = "Time: " + targetTime.ToString();
         _bossTime = targetTime / 2;
         _isBoss = false;
@@ -57,23 +63,24 @@ public class Timer : MonoBehaviour
         }
 
 
-        /**if (spawnTime <= 0f)
+        if (spawnTime <= 0f)
         {
-            Debug.Log("Enemy Appears");
+            //Debug.Log("Enemy Appears");
+            int randomVector = Random.Range(0,3);
             GameObject clone;
-            clone = Instantiate(_enemy, new Vector3(0.699999988f, 5.94000006f, 0), Quaternion.identity);
+            clone = Instantiate(_enemy, _doors[randomVector], Quaternion.identity);
             clone.GetComponent<MeleeEnemyBehavior>().player = _player; 
-            spawnTime = 2f;
+            spawnTime = 3f;
         }
 
         if(targetTime <= _bossTime && _isBoss == false)
         {
-            Debug.Log("Boss Appears");
+            //Debug.Log("Boss Appears");
             GameObject clone;
-            clone = Instantiate(_boss, new Vector3(0.699999988f, 5.94000006f, 0), Quaternion.identity);
+            clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);
             clone.GetComponent<BossEnemyBehavior>().player = _player;
             _isBoss = true;
-        }**/
+        }
 
         if(targetTime <= 0f)
         {

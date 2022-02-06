@@ -25,7 +25,7 @@ public class BuildingSpawner : MonoBehaviour
     {
         costText.text = "Rabbit Cost: " + rabbitCost;
         balanceText.text = "Total Coins : " + balance;
-        giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
+        //giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
     }
 
     // Update is called once per frame
@@ -78,6 +78,6 @@ public class BuildingSpawner : MonoBehaviour
 
         costText.text = "Rabbit Cost: " + rabbitCost;
         balanceText.text = "Total Coins : " + balance;
-        giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
+        //giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
     }
 }
