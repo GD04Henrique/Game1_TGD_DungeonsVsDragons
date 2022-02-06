@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4242155905521636127, guid: 2f2ae03405f754c469681ba26b4b9ce8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.3249264
+      value: 3.93
       objectReference: {fileID: 0}
     - target: {fileID: 4242155905521636127, guid: 2f2ae03405f754c469681ba26b4b9ce8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -226,7 +226,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5655990207325624404, guid: 2f2ae03405f754c469681ba26b4b9ce8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f2ae03405f754c469681ba26b4b9ce8, type: 3}
 --- !u!1 &387724980
 GameObject:
@@ -416,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404059340516494165, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.7973666
+      value: -3.37
       objectReference: {fileID: 0}
     - target: {fileID: 8404059340516494165, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
       propertyPath: m_LocalPosition.y
@@ -458,7 +459,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8404059340516494168, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
 --- !u!1 &556610343
 GameObject:

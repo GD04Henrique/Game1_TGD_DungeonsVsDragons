@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6199664122167345393}
   - component: {fileID: 6199664122167345395}
   - component: {fileID: 6199664122167345397}
+  - component: {fileID: -4680284121882818171}
   m_Layer: 9
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -149,3 +150,22 @@ MonoBehaviour:
   coin: {fileID: 8241813788413771160, guid: d39f91432f69ea74eb9cb4bdb472cedb, type: 3}
   player: {fileID: 0}
   moveSpeed: 0.3
+--- !u!95 &-4680284121882818171
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199664122167345396}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4af8136956b30cd468a3ccffb3941add, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

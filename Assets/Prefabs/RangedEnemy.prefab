@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4242155905521636113}
   - component: {fileID: 4242155905521636115}
   - component: {fileID: 5655990207325624404}
+  - component: {fileID: -5668851823733115157}
   m_Layer: 9
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -149,3 +150,22 @@ MonoBehaviour:
   coin: {fileID: 8241813788413771160, guid: d39f91432f69ea74eb9cb4bdb472cedb, type: 3}
   player: {fileID: 0}
   moveSpeed: 1
+--- !u!95 &-5668851823733115157
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242155905521636116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7685922a2ea0f14ab78f2933167e2fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
