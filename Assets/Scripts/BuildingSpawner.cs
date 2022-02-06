@@ -6,8 +6,8 @@ public class BuildingSpawner : MonoBehaviour
 
     public float snapValue = 16;
 
-    public GameObject rabbit;
-    public GameObject giraffe;
+    public GameObject rabbit; // BOOSTER
+    public GameObject giraffe; // OBSTACLE
 
     public LayerMask actor;
 
@@ -19,11 +19,13 @@ public class BuildingSpawner : MonoBehaviour
 
     public int balance = 20;
 
+    public GameObject Player;
+
     void Start()
     {
         costText.text = "Rabbit Cost: " + rabbitCost;
         balanceText.text = "Total Coins : " + balance;
-        giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
+        //giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class BuildingSpawner : MonoBehaviour
             if (balance >= rabbitCost)
             {
                 Instantiate(rabbit, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
+                rabbit.GetComponent<Tower>()._player = Player.GetComponent<PlayerController>();
                 rabbitCost += 2;
                 balance -= rabbitCost;
 
@@ -61,6 +64,7 @@ public class BuildingSpawner : MonoBehaviour
             if (balance >= giraffeCost)
             {
                 Instantiate(giraffe, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
+                giraffe.GetComponent<Tower>()._player = Player.GetComponent<PlayerController>();
                 giraffeCost += 2;
                 balance -= giraffeCost;
 
@@ -75,6 +79,6 @@ public class BuildingSpawner : MonoBehaviour
 
         costText.text = "Rabbit Cost: " + rabbitCost;
         balanceText.text = "Total Coins : " + balance;
-        giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
+        //giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
     }
 }

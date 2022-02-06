@@ -46,8 +46,7 @@ public class BossEnemyBehavior : BaseStats
     override
     public void OnDie()
     {
-        GameObject clone;
-        clone = Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        Timer._isClearGame = true;
         base.OnDie();
     }
 

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Tower : BaseStats
 {
-    [SerializeField]
-    private PlayerController _player;
+    public PlayerController _player;
 
     private int _OGplayerAttack;
     // Start is called before the first frame update
