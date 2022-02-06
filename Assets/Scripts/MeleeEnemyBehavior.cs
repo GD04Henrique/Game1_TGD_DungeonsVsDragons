@@ -16,9 +16,13 @@ public class MeleeEnemyBehavior : BaseStats
     [SerializeField]
     private float moveSpeed = 5f;
 
+    [SerializeField]
+    private Animator _meleeAnim;
+
     // Start is called before the first frame update
     void Start()
     {
+        _meleeAnim = GetComponent<Animator>();
         _health = 20f;
         rb = this.GetComponent<Rigidbody2D>();
     }
@@ -53,6 +57,7 @@ public class MeleeEnemyBehavior : BaseStats
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        _meleeAnim.SetTrigger("Attack");
         Attack(other.gameObject);
     }
 
