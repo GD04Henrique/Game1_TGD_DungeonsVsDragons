@@ -95,7 +95,7 @@ public class Timer : MonoBehaviour
             spawnTimeRanged = 3f;
         }
 
-        if(_enemyDefeated >= 15 && _isBoss == false)
+        if(_enemyDefeated >= 1 && _isBoss == false)
         {
             GameObject clone;
             clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);

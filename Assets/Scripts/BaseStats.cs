@@ -33,4 +33,10 @@ public class BaseStats : MonoBehaviour
     {
         _health -= damage;
     }
+
+    virtual
+    public void PrintHealth()
+    {
+        Debug.Log("ENEMY HEALTH: " + _health);
+    }
 }

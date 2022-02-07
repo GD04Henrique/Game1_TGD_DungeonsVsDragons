@@ -43,6 +43,10 @@ public class RangeEnemyBehavior : BaseStats
     // Update is called once per frame
     void Update()
     {
+        if(_health <= 0f)
+        {
+            OnDie();
+        }
         _timeThrowBone -= Time.deltaTime;
         Vector3 direction = player.position - transform.position;
         Vector3 stop = player.position - new Vector3(10f,10f,0f);
@@ -54,6 +58,10 @@ public class RangeEnemyBehavior : BaseStats
 
         if(_timeThrowBone <= 0f)
         {
+            if(bone != null)
+            {
+                Destroy(bone.gameObject);
+            }
             _rangeAnim.SetTrigger("Attack");
             Shoot(player.transform);
             _timeThrowBone = 4f;

@@ -26,6 +26,10 @@ public class BossEnemyBehavior : BaseStats
     // Update is called once per frame
     void Update()
     {
+        if(_health <= 0f)
+        {
+            OnDie();
+        }
         Vector3 direction = player.position - transform.position;
         //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
        // rb.rotation = angle;

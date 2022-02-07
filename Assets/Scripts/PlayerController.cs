@@ -45,15 +45,15 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             anim.Play("Attack");
-            if(_enemyTrigger == 1)
+            /**if(_enemyTrigger == 1)
             {
-                _Enemy.GetComponent<BaseStats>().OnDie();
+                _Enemy.GetComponent<BaseStats>().TakeDamage(attack);
                 _enemyTrigger--;
-            }
+            }**/
             //Enemy.OnDie();
         }
 
-        if(CurrentHealth == 0f)
+        if(CurrentHealth <= 0f)
         {
             SceneManager.LoadScene("End Game");
         }
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            Debug.Log("HIT COIN");
+            //Debug.Log("HIT COIN");
             _coins.balance++;
             Destroy(collision.gameObject);
         }
@@ -105,11 +105,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        /**if (collision.gameObject.CompareTag("Enemy"))
         {
             _enemyTrigger = 1;
             _Enemy = collision.gameObject;
             //Debug.Log("HIT ENEMY");
+        }**/
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                anim.Play("Attack");
+                collision.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
+                //collision.gameObject.GetComponent<BaseStats>().PrintHealth();
+            }
         }
 
         if (collision.gameObject.CompareTag("Bone"))
@@ -118,27 +127,32 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             //Debug.Log("HIT ENEMY");
         }
+    }
 
-        /**if (collision.gameObject.CompareTag("Coin"))
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("HIT COIN");
-            //ollision.gameObject.GetComponent<BuildingSpawner>().snapValue++;
-            _coins.balance++;
-            Destroy(collision.gameObject);
-        }**/
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                anim.Play("Attack");
+                other.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
+                //other.gameObject.GetComponent<BaseStats>().PrintHealth();
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        _enemyTrigger = 0;
-        _Enemy = null;
+        //_enemyTrigger = 0;
+        //_Enemy = null;
     }
 
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
         healthbar.SetHealth(CurrentHealth);
-        Debug.Log("taking damage, health: " + CurrentHealth);
+        //Debug.Log("taking damage, health: " + CurrentHealth);
     }
 
 
