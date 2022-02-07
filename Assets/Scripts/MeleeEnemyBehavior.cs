@@ -19,6 +19,9 @@ public class MeleeEnemyBehavior : BaseStats
     [SerializeField]
     private Animator _meleeAnim;
 
+    [SerializeField]
+    private AudioSource _sfxdeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,7 @@ public class MeleeEnemyBehavior : BaseStats
     override
     public void OnDie()
     {
+        _sfxdeath.Play();
         GameObject clone;
         clone = Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         Timer._enemyDefeated++;

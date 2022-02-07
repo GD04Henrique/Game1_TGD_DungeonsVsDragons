@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
 
     public HealthBar_Controller healthbar;
 
+    [SerializeField]
+    private AudioSource _sfxHit;
+
+    [SerializeField]
+    private AudioSource _sfxcoin;
+
     public int attack = 10;
     
     void Start()
@@ -98,6 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("HIT COIN");
             _coins.balance++;
+            _sfxcoin.Play();
             Destroy(collision.gameObject);
         }
 
@@ -116,6 +123,7 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 anim.Play("Attack");
+                _sfxHit.Play();
                 collision.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
                 //collision.gameObject.GetComponent<BaseStats>().PrintHealth();
             }
@@ -135,6 +143,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                _sfxHit.Play();
                 anim.Play("Attack");
                 other.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
                 //other.gameObject.GetComponent<BaseStats>().PrintHealth();

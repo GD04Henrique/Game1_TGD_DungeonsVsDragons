@@ -82,7 +82,7 @@ public class Timer : MonoBehaviour
             GameObject clone;
             clone = Instantiate(_enemy, _doors[randomVector], Quaternion.identity);
             clone.GetComponent<MeleeEnemyBehavior>().player = _player; 
-            spawnTime = 2f;
+            spawnTime = 3f;
         }
 
         if (spawnTimeRanged <= 0f)
@@ -92,10 +92,10 @@ public class Timer : MonoBehaviour
             GameObject clone;
             clone = Instantiate(_Rangedenemy, _doors[randomVector], Quaternion.identity);
             clone.GetComponent<RangeEnemyBehavior>().player = _player; 
-            spawnTimeRanged = 3f;
+            spawnTimeRanged = 5f;
         }
 
-        if(_enemyDefeated >= 1 && _isBoss == false)
+        if(_enemyDefeated >= 15 && _isBoss == false)
         {
             GameObject clone;
             clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);

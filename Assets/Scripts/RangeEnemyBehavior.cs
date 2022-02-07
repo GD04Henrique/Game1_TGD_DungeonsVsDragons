@@ -31,6 +31,9 @@ public class RangeEnemyBehavior : BaseStats
 
     private GameObject bone;
 
+    [SerializeField]
+    private AudioSource _sfxdeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +84,7 @@ public class RangeEnemyBehavior : BaseStats
     override
     public void OnDie()
     {
+        _sfxdeath.Play();
         GameObject clone;
         clone = Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         Timer._enemyDefeated++;

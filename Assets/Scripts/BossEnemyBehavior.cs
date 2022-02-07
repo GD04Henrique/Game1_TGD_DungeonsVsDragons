@@ -16,6 +16,9 @@ public class BossEnemyBehavior : BaseStats
     [SerializeField]
     private float moveSpeed = 0.1f;
 
+    [SerializeField]
+    private AudioSource _sfxdeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,7 @@ public class BossEnemyBehavior : BaseStats
     override
     public void OnDie()
     {
+        _sfxdeath.Play();
         Timer._isClearGame = true;
         base.OnDie();
     }
