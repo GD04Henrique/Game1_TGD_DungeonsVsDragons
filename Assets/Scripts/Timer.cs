@@ -35,6 +35,9 @@ public class Timer : MonoBehaviour
 
     public static int _enemyDefeated;
 
+    [SerializeField]
+    private AudioSource _bossSFX;
+
     private void Start()
     {
         _enemyDefeated = 0;
@@ -116,6 +119,7 @@ public class Timer : MonoBehaviour
 
         if(_isBoss == true)
         {
+            _bossSFX.Play();
             _bossText -= Time.deltaTime;
             timerText.text = "Boss Appeared!";
         }
