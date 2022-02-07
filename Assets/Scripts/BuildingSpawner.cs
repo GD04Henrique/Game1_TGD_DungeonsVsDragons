@@ -23,9 +23,9 @@ public class BuildingSpawner : MonoBehaviour
 
     void Start()
     {
-        costText.text = "Rabbit Cost: " + rabbitCost;
-        balanceText.text = "Total Coins : " + balance;
-        //giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
+        costText.text = "x" + rabbitCost;
+        balanceText.text = "Coins : " + balance;
+        giraffeCostText.text = "x" + giraffeCost;
     }
 
     // Update is called once per frame
@@ -42,43 +42,46 @@ public class BuildingSpawner : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            balanceText.text = "Total Coins : " + balance;
             if (balance >= rabbitCost)
             {
                 Instantiate(rabbit, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
                 rabbit.GetComponent<Tower>()._player = Player.GetComponent<PlayerController>();
-                rabbitCost += 2;
                 balance -= rabbitCost;
-
+                balanceText.text = "Coins : " + balance;
+                rabbitCost += 2;
             }
 
             if (balance < rabbitCost)
             {
-                Debug.Log("Insufficient balance");
+                balanceText.text = "Not Enough";
             }
            
         }
         if (Input.GetButtonDown("Fire2"))
         {
-            balanceText.text = "Total Coins : " + balance;
             if (balance >= giraffeCost)
             {
                 Instantiate(giraffe, new Vector2(Mathf.RoundToInt(mousePoint.x / snapValue) * snapValue, Mathf.RoundToInt(mousePoint.y / snapValue) * snapValue), Quaternion.identity);
                 giraffe.GetComponent<Tower>()._player = Player.GetComponent<PlayerController>();
-                giraffeCost += 2;
                 balance -= giraffeCost;
-
+                balanceText.text = "Coins : " + balance;
+                giraffeCost += 2;
             }
 
             if (balance < giraffeCost)
             {
-                Debug.Log("Insufficient balance");
+                balanceText.text = "Not Enough";
             }
 
         }
 
-        costText.text = "Rabbit Cost: " + rabbitCost;
-        balanceText.text = "Total Coins : " + balance;
-        //giraffeCostText.text = "Giraffe Cost: " + giraffeCost;
+        if(balance <= 0f)
+        {
+            balanceText.text = "Coins : 0";
+        }
+
+        costText.text = "x" + rabbitCost;
+        balanceText.text = "Coins : " + balance;
+        giraffeCostText.text = "x" + giraffeCost;
     }
 }

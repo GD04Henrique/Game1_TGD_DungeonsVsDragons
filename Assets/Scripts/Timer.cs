@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public float spawnTime = 2f;
 
     private float _bossTime;
+    private float _bossText = 1f;
     private bool _isBoss;
 
     public Text timerText;
@@ -65,7 +66,7 @@ public class Timer : MonoBehaviour
             float minutes = Mathf.FloorToInt(timeToDisplay / 60);
             float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            timerText.text = string.Format("Timer: {0:00}:{1:00}", minutes, seconds);
         }
 
 
@@ -94,6 +95,17 @@ public class Timer : MonoBehaviour
             clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);
             clone.GetComponent<BossEnemyBehavior>().player = _player;
             _isBoss = true;
+        }
+
+        if(_isBoss == true && _bossText >= 1f)
+        {
+            _bossText -= Time.time;
+            timerText.text = "Boss Appeared!";
+        }
+
+        if(_bossText <= 0f)
+        {
+            timerText.text = "Boss Appeared!";
         }
 
         if(targetTime <= 0f)
