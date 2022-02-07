@@ -152,6 +152,7 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 2
   _sfxdeath: {fileID: -276680136435772828}
+  _sfxPlayerHit: {fileID: 6165151841433590770, guid: 271008cac42ec5040a3a5fbca9b7a216, type: 3}
 --- !u!95 &-4680284121882818171
 Animator:
   serializedVersion: 3

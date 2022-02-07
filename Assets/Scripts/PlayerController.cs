@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioSource _sfxcoin;
 
+    [SerializeField]
+    private AudioSource _sfxPlayerHit;
+
     public int attack = 10;
 
     private bool _isAttacking = false;
@@ -187,6 +190,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        _sfxPlayerHit.Play();
         CurrentHealth -= damage;
         healthbar.SetHealth(CurrentHealth);
         //Debug.Log("taking damage, health: " + CurrentHealth);

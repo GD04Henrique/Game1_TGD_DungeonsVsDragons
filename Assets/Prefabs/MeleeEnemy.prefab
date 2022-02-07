@@ -153,6 +153,7 @@ MonoBehaviour:
   moveSpeed: 3
   _meleeAnim: {fileID: 0}
   _sfxdeath: {fileID: 6084817894476606187}
+  _sfxPlayerHit: {fileID: 6165151841433590770, guid: 271008cac42ec5040a3a5fbca9b7a216, type: 3}
 --- !u!95 &92565540144754007
 Animator:
   serializedVersion: 3
