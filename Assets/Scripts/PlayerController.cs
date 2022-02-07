@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isAttacking = false;
 
-    private float _attackTime = 1f;
+    private float _attackTime = 0.5f;
 
     private bool _attackOnce = false;
     
@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour
             _attackTime -= Time.deltaTime;
         }
 
-        if(_attackTime <= 0f)
+        if(_attackTime <= 0.0f)
         {
             _isAttacking = false;
             _attackOnce = false;
-            _attackTime = 1f;
+            _attackTime = 0.5f;
         }
 
         if(CurrentHealth <= 0f)
