@@ -24135,6 +24135,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 299766694}
+    - target: {fileID: 8404059340516494168, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8404059340516494174, guid: d12e8d7aa61b7474782d3cc54e5d9542, type: 3}
       propertyPath: m_Name
       value: Enemy

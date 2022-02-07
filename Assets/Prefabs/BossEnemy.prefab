@@ -149,7 +149,7 @@ MonoBehaviour:
   _health: 200
   coin: {fileID: 8241813788413771160, guid: d39f91432f69ea74eb9cb4bdb472cedb, type: 3}
   player: {fileID: 0}
-  moveSpeed: 0.3
+  moveSpeed: 2
 --- !u!95 &-4680284121882818171
 Animator:
   serializedVersion: 3

@@ -1,6 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private BuildingSpawner _coins;
+
+    [SerializeField]
+    private float _speed;
 
     [SerializeField]
     private Animator anim;
@@ -48,6 +52,11 @@ public class PlayerController : MonoBehaviour
             }
             //Enemy.OnDie();
         }
+
+        if(CurrentHealth == 0f)
+        {
+            SceneManager.LoadScene("End Game");
+        }
     }
 
     private void FixedUpdate()
@@ -72,13 +81,13 @@ public class PlayerController : MonoBehaviour
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if(hit.collider == null)
         {
-            transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
+            transform.Translate(0, moveDelta.y * _speed * Time.deltaTime, 0);
         }
 
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null)
         {
-            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+            transform.Translate(moveDelta.x * _speed * Time.deltaTime, 0, 0);
         }
      
     }

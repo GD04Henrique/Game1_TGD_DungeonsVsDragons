@@ -125,7 +125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coins: {fileID: 0}
+  _speed: 4
   anim: {fileID: 1388278022007659458}
+  maxHealth: 100
+  CurrentHealth: 0
+  healthbar: {fileID: 0}
+  attack: 10
 --- !u!95 &1388278022007659458
 Animator:
   serializedVersion: 3
