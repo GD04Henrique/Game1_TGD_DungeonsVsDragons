@@ -36,6 +36,12 @@ public class PlayerController : MonoBehaviour
     private AudioSource _sfxcoin;
 
     public int attack = 10;
+
+    private bool _isAttacking = false;
+
+    private float _attackTime = 1f;
+
+    private bool _attackOnce = false;
     
     void Start()
     {
@@ -51,12 +57,25 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             anim.Play("Attack");
+            _isAttacking = true;
             /**if(_enemyTrigger == 1)
             {
                 _Enemy.GetComponent<BaseStats>().TakeDamage(attack);
                 _enemyTrigger--;
             }**/
             //Enemy.OnDie();
+        }
+
+        if(_isAttacking == true)
+        {
+            _attackTime -= Time.deltaTime;
+        }
+
+        if(_attackTime <= 0f)
+        {
+            _isAttacking = false;
+            _attackOnce = false;
+            _attackTime = 1f;
         }
 
         if(CurrentHealth <= 0f)
@@ -118,15 +137,20 @@ public class PlayerController : MonoBehaviour
             _Enemy = collision.gameObject;
             //Debug.Log("HIT ENEMY");
         }**/
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.CompareTag("Enemy") && _isAttacking == true && _attackOnce == false)
         {
+            _sfxHit.Play();
+            collision.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
+            //collision.gameObject.GetComponent<BaseStats>().PrintHealth();
+            /**_enemyTrigger = 1;
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 anim.Play("Attack");
                 _sfxHit.Play();
                 collision.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
                 //collision.gameObject.GetComponent<BaseStats>().PrintHealth();
-            }
+            }**/
+            _attackOnce = true;
         }
 
         if (collision.gameObject.CompareTag("Bone"))
@@ -139,15 +163,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.CompareTag("Enemy") && _isAttacking == true && _attackOnce == false)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            _sfxHit.Play();
+            other.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
+            //other.gameObject.GetComponent<BaseStats>().PrintHealth();
+            /**if(Input.GetKeyDown(KeyCode.Space))
             {
                 _sfxHit.Play();
                 anim.Play("Attack");
                 other.gameObject.GetComponent<BaseStats>().TakeDamage(attack);
                 //other.gameObject.GetComponent<BaseStats>().PrintHealth();
-            }
+            }**/
+            _attackOnce = true;
         }
     }
 
