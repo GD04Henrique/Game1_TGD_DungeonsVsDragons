@@ -9,15 +9,19 @@ public class Timer : MonoBehaviour
     public float targetTime = 60f;
 
     public float spawnTime = 2f;
+    public float spawnTimeRanged = 3f;
 
     private float _bossTime;
-    private float _bossText = 1f;
+    private float _bossText = 2f;
     private bool _isBoss;
 
     public Text timerText;
 
     [SerializeField]
     private GameObject _enemy;
+
+    [SerializeField]
+    private GameObject _Rangedenemy;
 
     [SerializeField]
     private GameObject _boss;
@@ -48,6 +52,7 @@ public class Timer : MonoBehaviour
     {
         targetTime -= Time.deltaTime;
         spawnTime -= Time.deltaTime;
+        spawnTimeRanged -= Time.deltaTime;
 
         DisplayTime(targetTime);
 
@@ -80,12 +85,23 @@ public class Timer : MonoBehaviour
             spawnTime = 2f;
         }
 
-        if(_enemyDefeated >= 20 && _isBoss == false)
+        if (spawnTimeRanged <= 0f)
+        {
+            //Debug.Log("Enemy Appears");
+            int randomVector = Random.Range(0,3);
+            GameObject clone;
+            clone = Instantiate(_Rangedenemy, _doors[randomVector], Quaternion.identity);
+            clone.GetComponent<RangeEnemyBehavior>().player = _player; 
+            spawnTimeRanged = 3f;
+        }
+
+        if(_enemyDefeated >= 15 && _isBoss == false)
         {
             GameObject clone;
             clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);
             clone.GetComponent<BossEnemyBehavior>().player = _player;
             _isBoss = true;
+            //timerText.text = "Boss Appeared!";
         }
 
         if(targetTime <= _bossTime && _isBoss == false)
@@ -95,17 +111,18 @@ public class Timer : MonoBehaviour
             clone = Instantiate(_boss, new Vector3(15.2f, -3.4f, 0f), Quaternion.identity);
             clone.GetComponent<BossEnemyBehavior>().player = _player;
             _isBoss = true;
+            //timerText.text = "Boss Appeared!";
         }
 
-        if(_isBoss == true && _bossText >= 1f)
+        if(_isBoss == true)
         {
-            _bossText -= Time.time;
+            _bossText -= Time.deltaTime;
             timerText.text = "Boss Appeared!";
         }
 
         if(_bossText <= 0f)
         {
-            timerText.text = "Boss Appeared!";
+            DisplayTime(targetTime);
         }
 
         if(targetTime <= 0f)

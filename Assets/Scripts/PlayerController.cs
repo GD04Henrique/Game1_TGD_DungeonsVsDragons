@@ -112,6 +112,13 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("HIT ENEMY");
         }
 
+        if (collision.gameObject.CompareTag("Bone"))
+        {
+            TakeDamage(5);
+            Destroy(collision.gameObject);
+            //Debug.Log("HIT ENEMY");
+        }
+
         /**if (collision.gameObject.CompareTag("Coin"))
         {
             Debug.Log("HIT COIN");
